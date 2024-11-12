@@ -1,77 +1,40 @@
-import { Img, interpolate, useCurrentFrame } from 'remotion';
+import { Img, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
 
 interface ImageProps {
   img: string;
-  radius: number;
-  strokeWidth: number;
-  strokeColor: string;
 }
 
-const Image = ({ img, radius, strokeWidth, strokeColor }: ImageProps) => {
+const Image = ({ img }: ImageProps) => {
   const frame = useCurrentFrame();
-  const circumference = 2 * Math.PI * radius;
-  const segmentLength = circumference / 6;
-  const gapLength = circumference / 6;
+  const { durationInFrames } = useVideoConfig();
 
-  const rotate = frame / 4;
+  // Using interpolate for translate animation
+  const translateY = interpolate(
+    frame,
+    [0, 30], // Starting at frame 0 and ending at frame 30
+    [100, 0], // From -200px (off-screen) to 0px (in position)
+    { extrapolateRight: 'clamp' } // Prevents the value from exceeding the final position
+  );
 
-  const scale = interpolate(frame, [30, 50], [0, 1], {
-    extrapolateRight: 'clamp',
-    extrapolateLeft: 'clamp',
-  });
-
-  const imgTop = interpolate(frame, [40, 55], [radius * 2, -100], {
-    extrapolateRight: 'clamp',
-    extrapolateLeft: 'clamp',
-  });
+  // Using interpolate for scale animation
+  const scale = interpolate(
+    frame,
+    [30, durationInFrames], // Starting at frame 0 and ending at frame 30
+    [1.1, 1.3], // Scaling from 1 to 1.5
+    { extrapolateRight: 'clamp' } // Clamps scale at 1.5
+  );
 
   return (
-    <div
+    <Img
+      src={img}
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        transform: `scale(${scale})`,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        objectPosition: '50% top',
+        transform: `translateY(${translateY}px) scale(${scale})`,
       }}
-    >
-      <div
-        style={{
-          borderRadius: '100%',
-          width: radius * 2 - strokeWidth,
-          height: radius * 2 - strokeWidth,
-          overflow: 'hidden',
-          position: 'relative',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Img
-          src={img}
-          style={{
-            position: 'absolute',
-            width: radius * 4,
-            top: imgTop,
-          }}
-        />
-      </div>
-      <svg
-        width={radius * 2 + strokeWidth * 2}
-        height={radius * 2 + strokeWidth * 2}
-        style={{ position: 'absolute', rotate: `${rotate}deg` }}
-      >
-        <circle
-          cx={radius + strokeWidth}
-          cy={radius + strokeWidth}
-          r={radius}
-          stroke={strokeColor}
-          strokeWidth={strokeWidth}
-          fill="none"
-          strokeDasharray={`${segmentLength} ${gapLength}`}
-          strokeLinecap="round"
-        />
-      </svg>
-    </div>
+    />
   );
 };
 

@@ -5,7 +5,7 @@ import { Compare } from './Composition/Compare';
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-    <Composition
+      <Composition
         id="Template"
         component={Main}
         schema={MainSchema}
@@ -15,7 +15,7 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={900}
         defaultProps={{
           audioVolume: 0.5,
-          music: staticFile('music.mp3'),
+          music: staticFile('Music.mp3'),
           colors: {
             background: '#151515',
             backgroundText: '#FFFFFF',
@@ -29,19 +29,18 @@ export const RemotionRoot: React.FC = () => {
             accentText: '#f00',
           },
           background: {
-            type: 'crosses',
+            type: 'static',
             background: 'background',
-            stroke: 'backgroundText',
           },
           fonts: {
             primary: 'Montserrat',
-            secondary: "Abel"
+            secondary: 'Abel',
           },
           transitionDuration: 30,
           scene1Duration: 150,
           scene1Props: {
             logo: staticFile('Logo.png'),
-            title: "Hello world",
+            img: staticFile('Media_5.jpg'),
           },
           scene2Duration: 180,
           scene2Props: {
@@ -66,6 +65,7 @@ export const RemotionRoot: React.FC = () => {
           scene6Duration: 180,
           scene6Props: {
             logo: staticFile('Logo.png'),
+            img: staticFile('Media_5.jpg'),
           },
         }}
       />
@@ -79,7 +79,7 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={900}
         defaultProps={{
           audioVolume: 0.5,
-          music: staticFile('music.mp3'),
+          music: staticFile('Music.mp3'),
           colors: {
             background: '#151515',
             backgroundText: '#FFFFFF',
@@ -93,19 +93,18 @@ export const RemotionRoot: React.FC = () => {
             accentText: '#f00',
           },
           background: {
-            type: 'crosses',
+            type: 'static',
             background: 'background',
-            stroke: 'backgroundText',
           },
           fonts: {
             primary: 'Montserrat',
-            secondary: "Abel"
+            secondary: 'Abel',
           },
           transitionDuration: 30,
           scene1Duration: 150,
           scene1Props: {
             logo: staticFile('Logo.png'),
-            title: "Hello world",
+            img: staticFile('Media_5.jpg'),
           },
           scene2Duration: 180,
           scene2Props: {
@@ -130,6 +129,7 @@ export const RemotionRoot: React.FC = () => {
           scene6Duration: 180,
           scene6Props: {
             logo: staticFile('Logo.png'),
+            img: staticFile('Media_5.jpg'),
           },
         }}
       />

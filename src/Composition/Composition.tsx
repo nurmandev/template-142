@@ -23,7 +23,7 @@ export const MainSchema = z.object({
   music: z.string(),
   colors: Colors,
   fonts: Fonts,
-  background:BackgroundProps,
+  background: BackgroundProps,
   transitionDuration: z.number(),
   scene1Duration: z.number(),
   scene1Props: scene1Schema,
@@ -61,66 +61,68 @@ const Main: React.FC<MainProps> = ({
   scene6Props,
 }) => {
   const { id } = useVideoConfig();
-  
-  // You work will be mainly with the Scenes files   
 
-  // Work in this File: 
+  // You work will be mainly with the Scenes files
+
+  // Work in this File:
   // adapt the transitions to an existing one or to your new one
 
   // If you want to use a different component than a <TransitionSeries>
-  // then you'll have to talk to me why it's necessary. 
-
+  // then you'll have to talk to me why it's necessary.
 
   return (
-      <LoadFonts fonts={fonts}>
-        <AbsoluteFill id={id} style={{
+    <LoadFonts fonts={fonts}>
+      <AbsoluteFill
+        id={id}
+        style={{
           background: 'black',
           ...getCSSVariables({ colors: colors, fonts: fonts, roundness: 1 }),
-        }}>
-          {/* change the name of your music file in the public folder to match music.mp3  */}
-          <Audio src={staticFile('music.mp3')} volume={audioVolume} />
-          <TransitionSeries>
-            <TransitionSeries.Sequence durationInFrames={scene1Duration}>
-              <Scene1 {...scene1Props} background={background} />
-            </TransitionSeries.Sequence>
-            <TransitionSeries.Transition
-              presentation={WideSlidePresentation({ direction: 'from-right' })}
-              timing={linearTiming({ durationInFrames: transitionDuration })}
-            />
-            <TransitionSeries.Sequence durationInFrames={scene2Duration}>
-              <Scene2 {...scene2Props} background={background} />
-            </TransitionSeries.Sequence>
-            <TransitionSeries.Transition
-              presentation={customCenterPresentation({height:HEIGHT, width:WIDTH})}
-              timing={linearTiming({ durationInFrames: transitionDuration })}
-            />
-            <TransitionSeries.Sequence durationInFrames={scene3Duration}>
-              <Scene3 {...scene3Props} background={background} />
-            </TransitionSeries.Sequence>
-            <TransitionSeries.Transition
-              presentation={WideSlidePresentation({ direction: 'from-bottom' })}
-              timing={linearTiming({ durationInFrames: transitionDuration })}
-            />
-            <TransitionSeries.Sequence durationInFrames={scene4Duration}>
-              <Scene4 {...scene4Props} background={background} />
-            </TransitionSeries.Sequence>
-            <TransitionSeries.Transition
-              presentation={customL2RPresentation({height:HEIGHT, width:WIDTH})}
-              timing={linearTiming({ durationInFrames: transitionDuration })}
-            />
-            <TransitionSeries.Sequence durationInFrames={scene5Duration}>
-              <Scene5 {...scene5Props} background={background} />
-            </TransitionSeries.Sequence>
-            <TransitionSeries.Transition
-              presentation={WideSlidePresentation({ direction: 'from-bottom' })}
-              timing={linearTiming({ durationInFrames: transitionDuration })}
-            />
-            <TransitionSeries.Sequence durationInFrames={scene6Duration}>
-              <Scene6 {...scene6Props} background={background} />
-            </TransitionSeries.Sequence>
-          </TransitionSeries>
-        </AbsoluteFill>
-      </LoadFonts>
+        }}
+      >
+        {/* change the name of your music file in the public folder to match music.mp3  */}
+        <Audio src={staticFile('music.mp3')} volume={audioVolume} />
+        <TransitionSeries>
+          <TransitionSeries.Sequence durationInFrames={scene1Duration}>
+            <Scene1 {...scene1Props} background={background} />
+          </TransitionSeries.Sequence>
+          <TransitionSeries.Transition
+            presentation={customCenterPresentation({ height: HEIGHT, width: WIDTH })}
+            timing={linearTiming({ durationInFrames: transitionDuration })}
+          />
+          <TransitionSeries.Sequence durationInFrames={scene2Duration}>
+            <Scene2 {...scene2Props} background={background} />
+          </TransitionSeries.Sequence>
+          <TransitionSeries.Transition
+            presentation={customCenterPresentation({ height: HEIGHT, width: WIDTH })}
+            timing={linearTiming({ durationInFrames: transitionDuration })}
+          />
+          <TransitionSeries.Sequence durationInFrames={scene3Duration}>
+            <Scene3 {...scene3Props} background={background} />
+          </TransitionSeries.Sequence>
+          <TransitionSeries.Transition
+            presentation={customCenterPresentation({ height: HEIGHT, width: WIDTH })}
+            timing={linearTiming({ durationInFrames: transitionDuration })}
+          />
+          <TransitionSeries.Sequence durationInFrames={scene4Duration}>
+            <Scene4 {...scene4Props} background={background} />
+          </TransitionSeries.Sequence>
+          <TransitionSeries.Transition
+            presentation={customCenterPresentation({ height: HEIGHT, width: WIDTH })}
+            timing={linearTiming({ durationInFrames: transitionDuration })}
+          />
+          <TransitionSeries.Sequence durationInFrames={scene5Duration}>
+            <Scene5 {...scene5Props} background={background} />
+          </TransitionSeries.Sequence>
+          <TransitionSeries.Transition
+            presentation={customCenterPresentation({ height: HEIGHT, width: WIDTH })}
+            timing={linearTiming({ durationInFrames: transitionDuration })}
+          />
+          <TransitionSeries.Sequence durationInFrames={scene6Duration}>
+            <Scene6 {...scene6Props} background={background} />
+          </TransitionSeries.Sequence>
+        </TransitionSeries>
+      </AbsoluteFill>
+    </LoadFonts>
   );
 };
 
