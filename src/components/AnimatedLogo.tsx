@@ -1,49 +1,45 @@
-import { spring, useCurrentFrame } from 'remotion';
+import { interpolate, useCurrentFrame } from 'remotion';
 
-const AnimatedLogo = () => {
+const AnimatedLogo = ({ scale = 1 }) => {
   const frame = useCurrentFrame();
 
-  const topAnimationProgress = spring({
-    frame: frame - 20,
-    fps: 50,
-    from: -50, // Start position (off-screen)
-    to: 50, // End position (centered on the arc)
-    config: {
-      damping: 15,
-    },
-  });
+  const topAnimationProgress = interpolate(
+    frame,
+    [20, 50], // Animation duration frames
+    [-50, 50], // Movement from -50px (off-screen) to 50px (centered)
+    { extrapolateRight: 'clamp' }
+  );
 
-  const bottomAnimationProgress = spring({
-    frame: frame - 20,
-    fps: 50,
-    from: 150, // Start position (off-screen)
-    to: 50, // End position (centered on the arc)
-    config: {
-      damping: 15,
-    },
-  });
+  // Interpolate for the bottom arc animation
+  const bottomAnimationProgress = interpolate(
+    frame,
+    [20, 50], // Animation duration frames
+    [150, 50], // Movement from 150px (off-screen) to 50px (centered)
+    { extrapolateRight: 'clamp' }
+  );
 
-  const centerCircleAnimationProgress = spring({
-    frame: frame - 10,
-    fps: 50,
-    from: -200, // Start from off-screen above
-    to: 0, // End at its intended position
-    config: { damping: 12 },
-  });
+  // Interpolate for the center circle vertical translation
+  const centerCircleAnimationProgress = interpolate(
+    frame,
+    [10, 40], // Animation frames delayed slightly compared to top/bottom arcs
+    [-200, 0], // Movement from -200px (off-screen) to 0px (centered)
+    { extrapolateRight: 'clamp' }
+  );
 
-  const scaleAnimationProgress = spring({
-    frame: frame - 10,
-    fps: 50,
-    from: 0, // Start from off-screen above
-    to: 1, // End at its intended position
-    config: { damping: 12 },
-  });
+  // Interpolate for the center circle scale
+  const scaleAnimationProgress = interpolate(
+    frame,
+    [10, 40], // Scale animation frame range
+    [0, 1], // Scaling from 0 to 1 (full size)
+    { extrapolateRight: 'clamp' }
+  );
 
   return (
     <div
       style={{
         position: 'relative',
         opacity: scaleAnimationProgress,
+        transform: `scale(${scale})`,
       }}
     >
       <svg width="500" height="600" style={{ position: 'absolute', top: 0 }}>
@@ -111,7 +107,14 @@ const AnimatedLogo = () => {
         >
           McGRATH
         </div>
-        <div style={{ color: 'white', fontSize: '100px', opacity: scaleAnimationProgress }}>
+        <div
+          style={{
+            color: 'white',
+            fontSize: '90px',
+            fontWeight: '600',
+            opacity: scaleAnimationProgress,
+          }}
+        >
           USA
         </div>
       </div>

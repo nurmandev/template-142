@@ -102,12 +102,25 @@ const Logo = ({ logo, radius, direction = 'from-left' }: LogoProps) => {
         opacity: opacity,
       }}
     >
+      {/* Circular progress clip mask */}
+      <svg
+        width={radius * 2}
+        height={radius * 2}
+        viewBox={`0 0 ${radius * 2} ${radius * 2}`}
+        style={{ position: 'absolute', zIndex: 2 }}
+      >
+        <clipPath id="revealMask">
+          <path d={describeArc(radius, radius, radius, 0, progress)} fill="black" />
+        </clipPath>
+      </svg>
+
+      {/* Image to be revealed */}
       <Img
         src={logo}
         style={{
           width: radius * 2,
           height: radius * 2,
-          clipPath: 'url(#revealMask)',
+          clipPath: 'url(#revealMask)', // Uses the clip path for circular reveal
           position: 'absolute',
           zIndex: 1,
         }}

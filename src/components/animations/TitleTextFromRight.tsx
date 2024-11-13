@@ -1,10 +1,17 @@
-import { Fragment } from 'react/jsx-runtime'
-import { interpolate, useCurrentFrame, useVideoConfig } from 'remotion'
+import { Easing, interpolate, useCurrentFrame } from 'remotion';
 
-export const TitleTextFromRight = ({ text, startAt = 0 }: { text: string; startAt?: number }) => {
-  const { durationInFrames } = useVideoConfig()
-  const frame = useCurrentFrame()
-  const lines = text.split('\n')
+export const TitleTextFromRight = ({
+  text,
+  startAt = 0,
+  align = 'left',
+}: {
+  text: string;
+  startAt?: number;
+  align?: 'start' | 'end' | 'left' | 'right' | 'center' | 'justify' | 'match-parent';
+}) => {
+  const frame = useCurrentFrame();
+  const lines = text.split('\n');
+
   return (
     <>
       {lines.map((line, lineIndex) => (
@@ -15,53 +22,32 @@ export const TitleTextFromRight = ({ text, startAt = 0 }: { text: string; startA
             letterSpacing: 5,
             position: 'relative',
             whiteSpace: 'nowrap',
-            left: interpolate(
-              (frame - startAt - lineIndex * 5) / (durationInFrames - startAt),
-              [0, 0.23, 0.46, 0.7],
-              [-15, 15, -5, 0],
-              {
-                extrapolateLeft: 'clamp',
-                extrapolateRight: 'clamp',
-              },
-            ),
+            textAlign: align,
           }}
         >
-          {line.split(' ').map((word, index) => {
-            const delay = durationInFrames / 4
-            const startFrame =
-              delay *
-              lines
-                .join(' ')
-                .split(' ')
-                .findIndex((ele) => ele === word)
-            const opacity = interpolate(frame, [startFrame, startFrame + delay], [0, 1], {
+          {line.split('').map((char, charIndex) => {
+            const delay = 3;
+            const startFrame = startAt + charIndex * delay;
+            const opacity = interpolate(frame, [startFrame, startFrame + delay + 2], [0, 1], {
               extrapolateLeft: 'clamp',
               extrapolateRight: 'clamp',
-            })
-            const left = interpolate(frame, [startFrame, startFrame + delay], [50, 0], {
-              extrapolateLeft: 'clamp',
-              extrapolateRight: 'clamp',
-            })
+              easing: Easing.out(Easing.ease),
+            });
 
             return (
-              <Fragment key={`word-${index}`}>
-                <span
-                  style={{
-                    position: 'relative',
-                    top: 0,
-                    left,
-                    opacity,
-                  }}
-                >
-                  {word}
-                </span>
-                {index < line.split(' ').length - 1 && ' '}
-              </Fragment>
-            )
+              <span
+                key={`char-${lineIndex}-${charIndex}`}
+                style={{
+                  opacity,
+                }}
+              >
+                {char}
+              </span>
+            );
           })}
           {lineIndex < lines.length - 1 && <br />}
         </p>
       ))}
     </>
-  )
-}
+  );
+};

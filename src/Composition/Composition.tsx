@@ -13,10 +13,9 @@ import { LoadFonts } from '../lib/LoadFonts';
 import { getCSSVariables } from '../lib/helpers';
 import { Colors, Fonts } from '../types';
 import { BackgroundProps } from '../backgrounds';
-import { WideSlidePresentation } from '../transitions/WideSlidePresentation';
 import { customCenterPresentation } from '../transitions/CenterPresentation';
 import { HEIGHT, WIDTH } from '../lib/consts';
-import { customL2RPresentation } from '../transitions/Left2RightPresentation';
+import { customExpandingDiamondTransition } from '../transitions/SlideInCircleToRect';
 
 export const MainSchema = z.object({
   audioVolume: z.number(),
@@ -86,35 +85,55 @@ const Main: React.FC<MainProps> = ({
             <Scene1 {...scene1Props} background={background} />
           </TransitionSeries.Sequence>
           <TransitionSeries.Transition
-            presentation={customCenterPresentation({ height: HEIGHT, width: WIDTH })}
+            presentation={customExpandingDiamondTransition({
+              height: HEIGHT,
+              width: WIDTH,
+              direction: 'bottom-right',
+            })}
             timing={linearTiming({ durationInFrames: transitionDuration })}
           />
           <TransitionSeries.Sequence durationInFrames={scene2Duration}>
             <Scene2 {...scene2Props} background={background} />
           </TransitionSeries.Sequence>
           <TransitionSeries.Transition
-            presentation={customCenterPresentation({ height: HEIGHT, width: WIDTH })}
+            presentation={customExpandingDiamondTransition({
+              height: HEIGHT,
+              width: WIDTH,
+              direction: 'bottom-left',
+            })}
             timing={linearTiming({ durationInFrames: transitionDuration })}
           />
           <TransitionSeries.Sequence durationInFrames={scene3Duration}>
             <Scene3 {...scene3Props} background={background} />
           </TransitionSeries.Sequence>
           <TransitionSeries.Transition
-            presentation={customCenterPresentation({ height: HEIGHT, width: WIDTH })}
+            presentation={customExpandingDiamondTransition({
+              height: HEIGHT,
+              width: WIDTH,
+              direction: 'top-right',
+            })}
             timing={linearTiming({ durationInFrames: transitionDuration })}
           />
           <TransitionSeries.Sequence durationInFrames={scene4Duration}>
             <Scene4 {...scene4Props} background={background} />
           </TransitionSeries.Sequence>
           <TransitionSeries.Transition
-            presentation={customCenterPresentation({ height: HEIGHT, width: WIDTH })}
+            presentation={customExpandingDiamondTransition({
+              height: HEIGHT,
+              width: WIDTH,
+              direction: 'top-left',
+            })}
             timing={linearTiming({ durationInFrames: transitionDuration })}
           />
           <TransitionSeries.Sequence durationInFrames={scene5Duration}>
             <Scene5 {...scene5Props} background={background} />
           </TransitionSeries.Sequence>
           <TransitionSeries.Transition
-            presentation={customCenterPresentation({ height: HEIGHT, width: WIDTH })}
+            presentation={customExpandingDiamondTransition({
+              height: HEIGHT,
+              width: WIDTH,
+              direction: 'none',
+            })}
             timing={linearTiming({ durationInFrames: transitionDuration })}
           />
           <TransitionSeries.Sequence durationInFrames={scene6Duration}>
