@@ -20,17 +20,17 @@ type Scene6Props = z.infer<typeof scene6Schema> & { background: BackgroundProps 
 const Scene6: React.FC<Scene6Props> = (props) => {
   const title1Split = useTextSplitter({
     text: props.title1.toUpperCase(),
-    fontSize: 90,
+    fontSize: 60,
     fontWeight: '600',
     letterSpacing: '6px',
     maxLines: 2,
-    maxWidth: 600,
+    maxWidth: 1500,
   });
 
   const title2Split = useTextSplitter({
     text: props.title2.toUpperCase(),
     fontSize: 90,
-    fontWeight: '600',
+    fontWeight: '1000',
     letterSpacing: '6px',
     maxLines: 2,
     maxWidth: 600,
@@ -48,21 +48,41 @@ const Scene6: React.FC<Scene6Props> = (props) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          transform: 'translate(-15%,-25%)',
+          transform: 'translate(-15%,-30%)',
+          flexDirection: 'column',
         }}
       >
         <AnimatedLogo />
+      </AbsoluteFill>
 
-        <AbsoluteFill
-          style={{
-            ...title1Split.style,
-            color: 'white',
-            width: 600,
-            zIndex: 5,
-          }}
-        >
-          <TitleTextFromRight text={title1Split.text} startAt={50} align="left" />
-        </AbsoluteFill>
+      <AbsoluteFill
+        style={{
+          ...title1Split.style,
+          color: 'white',
+          width: 1500,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 5,
+          transform: 'translate(15%,25%)',
+        }}
+      >
+        <TitleTextFromRight text={title1Split.text} startAt={50} align="left" />
+      </AbsoluteFill>
+
+      <AbsoluteFill
+        style={{
+          ...title2Split.style,
+          color: 'white',
+          width: 1500,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 5,
+          transform: 'translate(15%,30%)',
+        }}
+      >
+        <TitleTextFromRight text={title2Split.text} startAt={50} align="left" />
       </AbsoluteFill>
     </AbsoluteFill>
   );

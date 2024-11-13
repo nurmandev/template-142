@@ -42,34 +42,34 @@ export const RemotionRoot: React.FC = () => {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_5.jpg'),
           },
-          scene2Duration: 180,
+          scene2Duration: 200,
           scene2Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_1.jpg'),
             title: "A MARINE \n VETERAN DEDICATED \n TO FIGHTING FOR \n AMERICA'S FUTURE",
           },
-          scene3Duration: 180,
+          scene3Duration: 200,
           scene3Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_2.jpg'),
             title:
               ' TOO MANY LEADERS FORGET THE VALUE OF SERVICE, INTEGRITY, AND TRUE REPRESENTATION',
           },
-          scene4Duration: 180,
+          scene4Duration: 200,
           scene4Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_3.jpg'),
             title:
               'bATTLEFIELD-TESTED LEADERSHIP AND COMMITMENT TOFIGHT FOR MEMBERS AND WOMEN IN LEADER',
           },
-          scene5Duration: 180,
+          scene5Duration: 200,
           scene5Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_4.jpg'),
             title:
               'ALEADER WHO EMBODIES INTEGRITY, CHAMPIONS THE PEOPLE, AND INSPIRES FUTIURE GENERATIONS',
           },
-          scene6Duration: 180,
+          scene6Duration: 200,
           scene6Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_5.jpg'),
@@ -115,36 +115,39 @@ export const RemotionRoot: React.FC = () => {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_5.jpg'),
           },
-          scene2Duration: 180,
+          scene2Duration: 200,
           scene2Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_1.jpg'),
             title: "A MARINE \n VETERAN DEDICATED \n TO FIGHTING FOR \n AMERICA'S FUTURE",
           },
-          scene3Duration: 180,
+          scene3Duration: 200,
           scene3Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_2.jpg'),
-            title: "A MARINE \n VETERAN DEDICATED \n TO FIGHTING FOR \n AMERICA'S FUTURE",
+            title:
+              ' TOO MANY LEADERS FORGET THE VALUE OF SERVICE, INTEGRITY, AND TRUE REPRESENTATION',
           },
-          scene4Duration: 180,
+          scene4Duration: 200,
           scene4Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_3.jpg'),
-            title: "A MARINE \n VETERAN DEDICATED \n TO FIGHTING FOR \n AMERICA'S FUTURE",
+            title:
+              'bATTLEFIELD-TESTED LEADERSHIP AND COMMITMENT TOFIGHT FOR MEMBERS AND WOMEN IN LEADER',
           },
-          scene5Duration: 180,
+          scene5Duration: 200,
           scene5Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_4.jpg'),
-            title: "A MARINE \n VETERAN DEDICATED \n TO FIGHTING FOR \n AMERICA'S FUTURE",
+            title:
+              'ALEADER WHO EMBODIES INTEGRITY, CHAMPIONS THE PEOPLE, AND INSPIRES FUTIURE GENERATIONS',
           },
-          scene6Duration: 180,
+          scene6Duration: 200,
           scene6Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_5.jpg'),
-            title1: "A MARINE \n VETERAN DEDICATED \n TO FIGHTING FOR \n AMERICA'S FUTURE",
-            title2: "A MARINE \n VETERAN DEDICATED \n TO FIGHTING FOR \n AMERICA'S FUTURE",
+            title1: 'Join Amy McGrath today',
+            title2: 'WWW.aAMYMCGRATH.COM',
           },
         }}
       />
