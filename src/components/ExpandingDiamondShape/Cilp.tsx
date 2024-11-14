@@ -39,7 +39,6 @@ const Clip: React.FC<PropsWithChildren<CustomShapeChangeProps>> = ({
             style={{
               clipPath: `url(#${clipId})`,
               background: clip.color || 'none',
-              zIndex: 2,
               opacity,
             }}
           >

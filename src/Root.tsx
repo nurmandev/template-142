@@ -55,21 +55,21 @@ export const RemotionRoot: React.FC = () => {
             title:
               ' TOO MANY LEADERS FORGET THE VALUE OF SERVICE, INTEGRITY, AND TRUE REPRESENTATION',
           },
-          scene4Duration: 200,
+          scene4Duration: 250,
           scene4Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_3.jpg'),
             title:
               'bATTLEFIELD-TESTED LEADERSHIP AND COMMITMENT TOFIGHT FOR MEMBERS AND WOMEN IN LEADER',
           },
-          scene5Duration: 200,
+          scene5Duration: 240,
           scene5Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_4.jpg'),
             title:
               'ALEADER WHO EMBODIES INTEGRITY, CHAMPIONS THE PEOPLE, AND INSPIRES FUTIURE GENERATIONS',
           },
-          scene6Duration: 200,
+          scene6Duration: 110,
           scene6Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_5.jpg'),
@@ -128,21 +128,21 @@ export const RemotionRoot: React.FC = () => {
             title:
               ' TOO MANY LEADERS FORGET THE VALUE OF SERVICE, INTEGRITY, AND TRUE REPRESENTATION',
           },
-          scene4Duration: 200,
+          scene4Duration: 250,
           scene4Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_3.jpg'),
             title:
               'bATTLEFIELD-TESTED LEADERSHIP AND COMMITMENT TOFIGHT FOR MEMBERS AND WOMEN IN LEADER',
           },
-          scene5Duration: 200,
+          scene5Duration: 240,
           scene5Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_4.jpg'),
             title:
               'ALEADER WHO EMBODIES INTEGRITY, CHAMPIONS THE PEOPLE, AND INSPIRES FUTIURE GENERATIONS',
           },
-          scene6Duration: 200,
+          scene6Duration: 110,
           scene6Props: {
             logo: staticFile('Logo.png'),
             img: staticFile('Media_5.jpg'),

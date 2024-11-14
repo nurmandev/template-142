@@ -41,15 +41,15 @@ const ExpandingDiamondTransition: React.FC<
       break;
 
     case 'top-right':
-      from1 = -height;
-      from2 = -height - 300;
-      from3 = -height - 1000;
+      from1 = -height * 1.8;
+      from2 = -height * 1.8 - 300;
+      from3 = -height * 1.8 - 1000;
       break;
 
     case 'top-left':
-      from1 = -height * 2;
-      from2 = -height * 2 - 300;
-      from3 = -height * 2 - 1000;
+      from1 = -height * 1.8;
+      from2 = -height * 1.8 - 300;
+      from3 = -height * 1.8 - 1000;
       break;
 
     default:
@@ -73,16 +73,14 @@ const ExpandingDiamondTransition: React.FC<
   return (
     <AbsoluteFill>
       {presentationDirection === 'exiting' && (
-        <AbsoluteFill>
-          <ExpandingDiamondShape
-            width={width}
-            height={height}
-            frame={presentationProgress}
-            direction={direction}
-          >
-            {children}
-          </ExpandingDiamondShape>
-        </AbsoluteFill>
+        <ExpandingDiamondShape
+          width={width}
+          height={height}
+          frame={presentationProgress}
+          direction={direction}
+        >
+          {children}
+        </ExpandingDiamondShape>
       )}
 
       <AbsoluteFill style={{ clipPath: `url(#${clipId1})` }}>
@@ -104,14 +102,14 @@ const ExpandingDiamondTransition: React.FC<
         </svg>
       </AbsoluteFill>
 
-      <AbsoluteFill style={{ clipPath: `url(#${clipId2})`, zIndex: 1 }}>
-        {presentationDirection === 'exiting' && children}
+      <AbsoluteFill style={{ clipPath: `url(#${clipId3})`, zIndex: 1 }}>
+        {presentationDirection === 'entering' && children}
         <svg width="100%" height="100%">
           <defs>
-            <clipPath id={clipId2}>
+            <clipPath id={clipId3}>
               <rect
-                x={width / 2 - size / 4 + translateY2}
-                y={translateY2}
+                x={width / 2 - size / 4 + translateY3}
+                y={translateY3}
                 width={size}
                 height={size}
                 rx={borderRadius}
@@ -123,14 +121,14 @@ const ExpandingDiamondTransition: React.FC<
         </svg>
       </AbsoluteFill>
 
-      <AbsoluteFill style={{ clipPath: `url(#${clipId3})`, zIndex: 1 }}>
-        {presentationDirection === 'entering' && children}
+      <AbsoluteFill style={{ clipPath: `url(#${clipId2})`, zIndex: 1 }}>
+        {presentationDirection === 'exiting' && children}
         <svg width="100%" height="100%">
           <defs>
-            <clipPath id={clipId3}>
+            <clipPath id={clipId2}>
               <rect
-                x={width / 2 - size / 4 + translateY3}
-                y={translateY3}
+                x={width / 2 - size / 4 + translateY2}
+                y={translateY2}
                 width={size}
                 height={size}
                 rx={borderRadius}
