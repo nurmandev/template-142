@@ -7,6 +7,7 @@ import { HEIGHT, WIDTH } from '../lib/consts';
 import { useTextSplitter } from '../lib/useTextSplitter';
 import { TitleTextFromRight } from '../components/animations/TitleTextFromRight';
 import AnimatedLogo from '../components/AnimatedLogo';
+import DiagonalSweep from '../components/DiagonalSweep';
 
 export const scene5Schema = z.object({
   logo: z.string(),
@@ -37,7 +38,9 @@ const Scene5: React.FC<Scene5Props> = (props) => {
         frame={animateFrame}
         direction={'top-left'}
       >
-        <Image img={props.img} />
+        <DiagonalSweep masks={[{ width: 300, start: [0, 0], end: [1920, 1080] }]}>
+          <Image img={props.img} />
+        </DiagonalSweep>
       </ExpandingDiamondShape>
 
       <AbsoluteFill

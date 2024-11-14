@@ -13,7 +13,6 @@ import { LoadFonts } from '../lib/LoadFonts';
 import { getCSSVariables } from '../lib/helpers';
 import { Colors, Fonts } from '../types';
 import { BackgroundProps } from '../backgrounds';
-import { customCenterPresentation } from '../transitions/CenterPresentation';
 import { HEIGHT, WIDTH } from '../lib/consts';
 import { customExpandingDiamondTransition } from '../transitions/SlideInCircleToRect';
 

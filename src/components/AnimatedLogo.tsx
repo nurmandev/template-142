@@ -1,21 +1,21 @@
-import { interpolate, useCurrentFrame } from 'remotion';
+import { Easing, interpolate, useCurrentFrame } from 'remotion';
 
 const AnimatedLogo = ({ scale = 1 }) => {
   const frame = useCurrentFrame();
 
   const topAnimationProgress = interpolate(
     frame,
-    [20, 50], // Animation duration frames
-    [-50, 50], // Movement from -50px (off-screen) to 50px (centered)
-    { extrapolateRight: 'clamp' }
+    [20, 45], // Animation duration frames
+    [-25, 50], // Movement from -50px (off-screen) to 50px (centered)
+    { extrapolateRight: 'clamp', easing: Easing.out(Easing.ease) }
   );
 
   // Interpolate for the bottom arc animation
   const bottomAnimationProgress = interpolate(
     frame,
-    [20, 50], // Animation duration frames
-    [150, 50], // Movement from 150px (off-screen) to 50px (centered)
-    { extrapolateRight: 'clamp' }
+    [20, 45], // Animation duration frames
+    [175, 50], // Movement from 150px (off-screen) to 50px (centered)
+    { extrapolateRight: 'clamp', easing: Easing.out(Easing.ease) }
   );
 
   // Interpolate for the center circle vertical translation

@@ -25,47 +25,44 @@ const Clip: React.FC<PropsWithChildren<CustomShapeChangeProps>> = ({
     easing: Easing.out(Easing.ease),
   });
   return (
-    frame && (
-      <AbsoluteFill>
-        {clips.map((clip, index) => {
-          const clipId = `clip-${Math.random()}`;
+    <AbsoluteFill>
+      {clips.map((clip) => {
+        const clipId = `clip-${Math.random()}`;
 
-          const animatedSize = interpolate(frame, [clip.delay, 1], [size / 5, size], {
-            extrapolateRight: 'clamp',
-            easing: Easing.out(Easing.ease),
-          });
-
-          return (
-            <AbsoluteFill
-              key={clipId}
-              style={{
-                clipPath: `url(#${clipId})`,
-                background: clip.color || 'none',
-                zIndex: 2,
-                opacity,
-              }}
-            >
-              {!clip.color && children}
-              <svg width="100%" height="100%">
-                <defs>
-                  <clipPath id={clipId}>
-                    <rect
-                      x={centerX - animatedSize / 2}
-                      y={centerY - animatedSize / 2}
-                      width={animatedSize}
-                      height={animatedSize}
-                      rx={borderRadius}
-                      ry={borderRadius}
-                      transform={`rotate(45, ${centerX}, ${centerY})`}
-                    />
-                  </clipPath>
-                </defs>
-              </svg>
-            </AbsoluteFill>
-          );
-        })}
-      </AbsoluteFill>
-    )
+        const animatedSize = interpolate(frame, [clip.delay, 1], [size / 5, size], {
+          extrapolateRight: 'clamp',
+          easing: Easing.out(Easing.ease),
+        });
+        return (
+          <AbsoluteFill
+            key={clipId}
+            style={{
+              clipPath: `url(#${clipId})`,
+              background: clip.color || 'none',
+              zIndex: 2,
+              opacity,
+            }}
+          >
+            {!clip.color && children}
+            <svg width="100%" height="100%">
+              <defs>
+                <clipPath id={clipId}>
+                  <rect
+                    x={centerX - animatedSize / 2}
+                    y={centerY - animatedSize / 2}
+                    width={animatedSize}
+                    height={animatedSize}
+                    rx={borderRadius}
+                    ry={borderRadius}
+                    transform={`rotate(45, ${centerX}, ${centerY})`}
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+          </AbsoluteFill>
+        );
+      })}
+    </AbsoluteFill>
   );
 };
 

@@ -25,27 +25,66 @@ const ExpandingDiamondTransition: React.FC<
   const size = useMemo(() => Math.sqrt(width ** 2 + height ** 2), [width, height]);
   const borderRadius = size / 5;
 
+  let from1, from2, from3;
+
+  switch (direction) {
+    case 'bottom-left':
+      from1 = height;
+      from2 = height + 300;
+      from3 = height + 1000;
+      break;
+
+    case 'bottom-right':
+      from1 = height;
+      from2 = height + 300;
+      from3 = height + 1000;
+      break;
+
+    case 'top-left':
+      from1 = -height * 2;
+      from2 = -height * 2 - 300;
+      from3 = -height * 2 - 1000;
+      break;
+
+    case 'top-left':
+      from1 = -height * 2;
+      from2 = -height * 2 - 300;
+      from3 = -height * 2 - 1000;
+      break;
+
+    default:
+      from1 = height;
+      from2 = height + 300;
+      from3 = height + 1000;
+      break;
+  }
+
   // Calculate translateY for each shape
-  const translateY1 = interpolate(presentationProgress, [0, 1], [height, -height / 2], {
+  const translateY1 = interpolate(presentationProgress, [0, 0.5], [from1, -height / 2], {
     extrapolateRight: 'clamp',
   });
-  const translateY2 = interpolate(presentationProgress, [0, 1], [height + 300, -height / 2], {
+  const translateY2 = interpolate(presentationProgress, [0, 0.5], [from2, -height / 2], {
     extrapolateRight: 'clamp',
   });
-  const translateY3 = interpolate(presentationProgress, [0, 0.95], [height + 1000, -height / 2], {
+  const translateY3 = interpolate(presentationProgress, [0, 0.5], [from3, -height / 2], {
     extrapolateRight: 'clamp',
   });
 
   return (
-    // <ExpandingDiamondShape
-    //   width={width}
-    //   height={height}
-    //   frame={presentationProgress}
-    //   direction={direction}
-    // >
     <AbsoluteFill>
-      {presentationDirection === 'exiting' && <AbsoluteFill>{children}</AbsoluteFill>}
-      {/* First SVG - Entering Children */}
+      {presentationDirection === 'exiting' && (
+        <AbsoluteFill>
+          <ExpandingDiamondShape
+            width={width}
+            height={height}
+            frame={presentationProgress}
+            direction={direction}
+          >
+            {children}
+          </ExpandingDiamondShape>
+        </AbsoluteFill>
+      )}
+
       <AbsoluteFill style={{ clipPath: `url(#${clipId1})` }}>
         {presentationDirection === 'entering' && children}
         <svg width="100%" height="100%">

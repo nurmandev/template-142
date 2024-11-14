@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useMemo } from 'react';
-import { AbsoluteFill, Easing, interpolate } from 'remotion';
+import { AbsoluteFill } from 'remotion';
 import Clip from './Cilp';
 
 export type CustomShapeChangeProps = {
@@ -134,7 +134,7 @@ const ExpandingDiamondShape: React.FC<PropsWithChildren<CustomShapeChangeProps>>
         centerY={centerY1}
         frame={frame}
         size={size}
-        clips={[{ color: fillColor, delay: 0.1 }, { delay: 0.2 }, { color: fillColor, delay: 0.3 }]}
+        clips={[{ color: fillColor, delay: 0 }, { delay: 0.2 }, { color: fillColor, delay: 0.3 }]}
       >
         {children}
       </Clip>
