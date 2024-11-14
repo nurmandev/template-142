@@ -3,6 +3,7 @@ import React from 'react';
 
 interface DiagonalSweepMaskProps {
   children: React.ReactNode;
+  direction?: 'left' | 'right';
   masks: {
     width: number; // Width of the sweep
     start: [number, number]; // Start point [x, y]
@@ -10,7 +11,11 @@ interface DiagonalSweepMaskProps {
   }[];
 }
 
-const DiagonalSweep: React.FC<DiagonalSweepMaskProps> = ({ children, masks }) => {
+const DiagonalSweep: React.FC<DiagonalSweepMaskProps> = ({
+  children,
+  direction = 'right',
+  masks,
+}) => {
   const frame = useCurrentFrame();
 
   // Canvas dimensions
@@ -36,7 +41,7 @@ const DiagonalSweep: React.FC<DiagonalSweepMaskProps> = ({ children, masks }) =>
           {masks.map((mask, index) => {
             const { width, start, end } = mask;
 
-            const rotation = 45 * (180 / Math.PI);
+            const rotation = (direction === 'left' ? 90 : 45) * (180 / Math.PI);
 
             // Sweep animation progress (0 to 1)
             const sweep = interpolate(frame, [100, 140], [0, 1], {

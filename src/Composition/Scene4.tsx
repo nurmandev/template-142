@@ -38,7 +38,7 @@ const Scene4: React.FC<Scene4Props> = (props) => {
         frame={animateFrame}
         direction={'top-right'}
       >
-        <DiagonalSweep masks={[{ width: 300, start: [1920, 0], end: [0, 1080] }]}>
+        <DiagonalSweep direction="left" masks={[{ width: 300, start: [1920, 0], end: [0, 1080] }]}>
           <Image img={props.img} />
         </DiagonalSweep>
       </ExpandingDiamondShape>

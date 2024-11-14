@@ -40,10 +40,10 @@ const ExpandingDiamondTransition: React.FC<
       from3 = height + 1000;
       break;
 
-    case 'top-left':
-      from1 = -height * 2;
-      from2 = -height * 2 - 300;
-      from3 = -height * 2 - 1000;
+    case 'top-right':
+      from1 = -height;
+      from2 = -height - 300;
+      from3 = -height - 1000;
       break;
 
     case 'top-left':
@@ -60,13 +60,13 @@ const ExpandingDiamondTransition: React.FC<
   }
 
   // Calculate translateY for each shape
-  const translateY1 = interpolate(presentationProgress, [0, 0.5], [from1, -height / 2], {
+  const translateY1 = interpolate(presentationProgress, [0, 0.7], [from1, -height / 2], {
     extrapolateRight: 'clamp',
   });
-  const translateY2 = interpolate(presentationProgress, [0, 0.5], [from2, -height / 2], {
+  const translateY2 = interpolate(presentationProgress, [0, 0.7], [from2, -height / 2], {
     extrapolateRight: 'clamp',
   });
-  const translateY3 = interpolate(presentationProgress, [0, 0.5], [from3, -height / 2], {
+  const translateY3 = interpolate(presentationProgress, [0, 0.7], [from3, -height / 2], {
     extrapolateRight: 'clamp',
   });
 
